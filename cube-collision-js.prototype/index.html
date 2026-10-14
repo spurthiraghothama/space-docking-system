@@ -1533,7 +1533,6 @@ function updateBungee(dt) {
   // Elasticity = 0 → bungee disabled
   if (e === 0) {
     blueVelocity.set(0, 0, 0);
-    blueAngularVelocity.set(0, 0, 0);
 
     cube1.position.copy(blueRestPosition);
 
@@ -1666,27 +1665,6 @@ function updateBodies(dt) {
         yellowAngularVelocity,
         dt
     );
-
-
-    // Angular damping
-
-    const angularDamping =
-        Math.pow(
-            0.25,
-            dt
-        );
-
-
-    blueAngularVelocity
-        .multiplyScalar(
-            angularDamping
-        );
-
-
-    yellowAngularVelocity
-        .multiplyScalar(
-            angularDamping
-        );
 
 }
 

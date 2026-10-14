@@ -1,0 +1,13 @@
+build/
+build_win/
+venv/
+.DS_Store
+*.o
+*.a
+*.dylib
+*.so
+*.exe
+*.csv
+*.log
+*.ini
+
