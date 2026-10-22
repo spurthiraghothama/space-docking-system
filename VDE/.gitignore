@@ -1,0 +1,22 @@
+# Build directories
+build/
+bin/
+lib/
+
+# Logs and outputs
+logs/*.csv
+*.log
+
+# IDE and Editor files
+.vscode/
+.vs/
+*.user
+*.suo
+
+# Compiled artifacts
+*.exe
+*.obj
+*.o
+*.a
+*.lib
+*.dll

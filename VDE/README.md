@@ -1,30 +1,30 @@
-# Spacecraft Docking System: 3D Cube Collision & Dynamics Simulation
+# Digital Twin for Augmented VDE Test Facility
 
-A real-time 3D rigid-body docking and post-contact pose estimation simulation built in C++17 with OpenGL, GLFW, GLAD, and GLM.
+Real-time Hardware-in-the-Loop (HIL) digital twin platform for space docking simulation.
 
-## Features
-- **3D Visualization:** Real-time 60 Hz OpenGL rendering of Chaser and Target spacecraft cubes.
-- **Orientation Kinematics:** 4D unit quaternion attitude tracking avoiding Euler gimbal lock, with conversion to Euler Roll-Pitch-Yaw angles.
-- **Interactive Scenarios:**
-  - `[1]` **Head-on collision**: Symmetrical straight-line rebound, zero net torque.
-  - `[2]` **Off-center collision**: Asymmetric impact producing net torque, lever-arm rotation, and spin.
-  - `[R]` **Reset**: Re-initialize current scenario.
-  - `[SPACE]` **Pause / Resume**: Toggle simulation state.
-- **Contact Reconstruction:** Multi-axis force and torque distribution across a 6-cell hexagonal load-cell array, contact point estimation, and rigid-body acceleration propagation.
+## Architecture Overview
+- **Dynamics Engine Software (Server):** Real-time physics engine loop executed at 1 ms interval.
+- **Visualization Software (Client):** Decoupled rendering loop running at 60 Hz display refresh rate.
+- **External Interfaces:** Network socket connections to Stewart Platform Control, DAQ/Sensors, and NGC Module.
 
-## Prerequisites
-- CMake 3.20+
-- C++17 compliant compiler (GCC, Clang, or MSVC)
-
-## Build Instructions
-
-```bash
-cmake -B build
-cmake --build build
+## Project Structure
+```text
+VDE/
+├── docs/             # Design and architecture documentation
+├── include/          # Public header files
+├── src/              # Implementation source code
+│   ├── dynamics_engine/ # Real-time dynamics and kinematics engine
+│   ├── visualization/   # GUI and 3D rendering engine
+│   ├── network/         # Client-Server socket network layer
+│   └── utils/           # CSV and Error logging modules
+├── tests/            # Unit, integration, and system tests
+├── config/           # Setup and run parameters
+└── logs/             # Output directory for execution logs
 ```
 
-## Running the Simulation
-
-- **Windows:** `.\build\provenance_docking_sim.exe` (or `.\build\Debug\provenance_docking_sim.exe`)
-- **macOS / Linux:** `./build/provenance_docking_sim`
-
+## Build Instructions
+```bash
+mkdir build && cd build
+cmake ..
+cmake --build .
+```
